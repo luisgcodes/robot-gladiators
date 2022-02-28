@@ -51,4 +51,5 @@ else {
     window.alert(playerName + " still has " + playerHealth + " health left."); 
 }
 
+
 fight();
