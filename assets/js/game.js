@@ -71,6 +71,10 @@ var fight = function (enemyName) {
 
 // function to start a new game
 var startGame = function() {
+  // reset player stats
+  playerHealth = 100;
+  playerAttack = 10;
+  playerMoney = 10;
   for (var i = 0; i < enemyNames.length; i++) {
       if (playerHealth > 0) {
           // let player know what round they are in, remember that arrays start at 0 so it needs to have 1 added to it
@@ -94,8 +98,8 @@ var startGame = function() {
             break;
           }
       }
-    // play again
-  startGame(); 
-  }
-// play again
+  // play again
+  startGame();
+};
+// start the game when the page loads
 startGame();
