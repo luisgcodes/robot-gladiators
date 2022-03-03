@@ -71,9 +71,7 @@ var fight = function(enemy) {
 // function to start a new game
 var startGame = function() {
   // reset player stats
-  playerInfo.health = 100;
-  playerInfo.attack = 10;
-  playerInfo.money = 10;
+  playerInfo.reset();
 
   for (var i = 0; i < enemyInfo.length; i++) {
       if (playerInfo.health > 0) {
@@ -146,35 +144,14 @@ var shop = function() {
 
   // use switch to carry out action
   switch (shopOptionPrompt) {
-    case " REFILL": //new case
+    case "REFILL": //new case
     case "refill":
-      if (playerInfo.money >= 7) {
-        window.alert("Refilling player's health by 20 for 7 dollars.");
-
-        // increase health and decrease money 
-        playerInfo.health = playerInfo.health + 20;
-        playerInfo.money = playerInfo.money - 7;
-      }
-      else {
-        window.alert("You don't have enough money!")
-      }
-    
+      playerInfo.refillHealth();
       break;
     case "UPGRADE": // new case
     case "upgrade":
-      if (playerInfo.money >= 7) {
-        window.alert("Upgrading player's attack by 6 for 7 dollars.");
-
-        // increase attack and decrease money 
-        playerInfo.attack = playerInfo.attack + 6;
-        playerInfo.money = playerInfo.money - 7;
-      }
-      else {
-        window.alert("You don't have enough money!");
-      }
-      
-    
-    break;
+      playerInfo.upgradeAttack();
+      break;
     case "LEAVE": // new case
     case "leave":
       window.alert("Leaving the store");
@@ -200,6 +177,26 @@ var playerInfo = {
     this.health = 100;
     this.money = 10;
     this.attack = 10;
+  },
+  refillHealth: function() {
+    if (this.money >= 7) {
+      window.alert("Refilling player's health by 20 for 7 dollars.");
+      this.health += 20;
+      this.money -= 7;
+    }
+    else {
+      window.alert("You don't have enough money!");
+    }
+  },
+  upgradeAttack: function() {
+    if (this.money >= 7) {
+      window.alert("Upgrading player's attack by 6 for 7 dollars.");
+      this.attack +=6;
+      this.money -= 7;
+    }
+  else {
+    window.alert("You don't have enough money!");
+    }
   }
 };
 
